@@ -4,7 +4,7 @@
 #include "arduino_secrets.h" 
 
 #define SERVER "192.168.1.106"
-#define PORT 5000
+#define SERVER_PORT 5000
 #define CONTENT_TYPE "Content-type: application/x-www-form-urlencoded"
 
 WiFiClient client;
@@ -55,11 +55,12 @@ void wifiConnect(){
     // Connect to WPA/WPA2 network. Change this line if using open or WEP network:
         status = WiFi.begin(SECRET_SSID, SECRET_PASS);
     }
+    Serial.println("Connected to WiFi");
 }
 
 void postRequest(String postData){
 
-    if (client.connect(SERVER, PORT)) {
+    if (client.connect(SERVER, SERVER_PORT)) {
     
     String dataLength = String("Content-Length: ") + postData.length() + "\r\n";
     // Make a HTTP request:
