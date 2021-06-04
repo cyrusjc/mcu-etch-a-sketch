@@ -79,7 +79,8 @@ void analogPinSetup(){
     /* Set PB09 to function B which is analog input. */
     PORT->Group[1].PMUX[4].reg = PORT_PMUX_PMUXO_B;
 }
-void readAnalog(){
+
+void readJoystick(){
     // /* Wait for bus synchronization. */
     // while (ADC->STATUS.bit.SYNCBUSY) {};
 
@@ -94,13 +95,5 @@ void readAnalog(){
 
     // /* Read the value. */
     // return ADC->RESULT.reg;
-    int x1 = (analogRead(A1));//*100)/1023;
-    int y1 = (analogRead(A2));//*100)/1023;
-    int x2 = (analogRead(A1));//*100)/1023;
-    int y2 = (analogRead(A2));//*100)/1023;
-    Serial.print(x1);
-    Serial.print("% ");
-    Serial.print(y2);
-    Serial.println("% ");
-
+    return;
 }

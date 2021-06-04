@@ -1,7 +1,5 @@
-#include <SPI.h>
-#include <WiFiNINA.h>
-
 #include "arduino_secrets.h" 
+#include <WiFiNINA.h>
 
 #define SERVER "192.168.1.106"
 #define SERVER_PORT 5000
@@ -12,9 +10,18 @@ WiFiClient client;
 class diagnostic{
     public:
         void checkWifiStatus();
+        bool isWifiConnected();
         void printWifiStatus();
         void checkWifiVersion();
 } diag;
+
+bool diagnostic::isWifiConnected(){
+  if(WiFi.status() == WL_CONNECTED){
+    return true;
+  }
+  else
+    return false;
+}
 
 void diagnostic::checkWifiStatus(){
     if (WiFi.status() == WL_NO_MODULE) {
@@ -90,3 +97,4 @@ void displayResponse(){
   //Serial.println("\n=================================");
   
 }
+
