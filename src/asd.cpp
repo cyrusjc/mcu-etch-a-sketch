@@ -6,18 +6,25 @@
 #include "mcu_setup.cpp"
 #include "initialize.cpp"
 
+
+#define READ_ANALOG_DELAY_MS 
+#define CHECK_WIFI_DELAY_MS 5000
+
 void readAnalogStick(void* parameters){
   int x1 = 0;
   int y1 = 0;
   int count = 0;
-  String data ="x=";
+  String data;
   while(true){
-    x1 += (analogRead(A1));//*100)/1023;
+
+    x1 += (analogRead(A1)*100)/1023;
     //int y1 = (analogRead(A2));//*100)/1023;
     //int x2 = (analogRead(A1));//*100)/1023;
-    y1 += (analogRead(A2));//*100)/1023;
+    y1 += (analogRead(A2)*100)/1023;
     count++;
     if (count > 3){
+
+
         x1 = (int)x1/4;
         y1 = (int)y1/4;
         data = ((String("x1=")) + x1 + "&" +"y1=" + y1);
@@ -27,6 +34,10 @@ void readAnalogStick(void* parameters){
         // Serial.print(y1);
         // Serial.println("% ");
         //Serial.println(data);
+        Serial.print("Posting Data");
+        if (!diag.isWifiConnected()){
+          wifiConnect();
+        }
         postRequest(data);
         x1 = y1 = 0;
         count = 0;
@@ -34,7 +45,7 @@ void readAnalogStick(void* parameters){
 
     }
 
-    vTaskDelay(100 / portTICK_PERIOD_MS);
+    vTaskDelay(250 / portTICK_PERIOD_MS);
   }
 }
 
@@ -43,11 +54,12 @@ void wifiCheck(void* parameters){
 
     if(diag.isWifiConnected()){
       Serial.println("Wifi Still here:)");
-      vTaskDelay(10000/portTICK_PERIOD_MS);
+      vTaskDelay(1000/portTICK_PERIOD_MS);
       continue;
     }
-
-    wifiConnect();
+    Serial.println("Suspended Tasks");
+    
+    Serial.println("Resumed Tasks");
       
   }
 }
@@ -68,7 +80,7 @@ void FreeRTOS_INITIALIZE(){
         "Wifi Check",   // Name of task
         1024,            // Size of stack
         NULL,            // Parameters for function
-        1,               // Task Priority
+        2,               // Task Priority
         NULL             // Task Handle (pointer)
     );
 
@@ -88,9 +100,6 @@ void SYSTEM_INITIALIZE(){
 void setup(){
   //Initialize serial and wait for port to open:
   Serial.begin(9600);
-
-  while(!Serial){
-  }
 
   Serial.println("Initializing");
   SYSTEM_INITIALIZE();

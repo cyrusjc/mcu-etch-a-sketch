@@ -57,6 +57,7 @@ void diagnostic::checkWifiVersion(){
 
 void wifiConnect(){
     int status = WL_IDLE_STATUS;
+    Serial.println("Connecting...");
      // attempt to connect to WiFi network:
     while (status != WL_CONNECTED) {
     // Connect to WPA/WPA2 network. Change this line if using open or WEP network:
