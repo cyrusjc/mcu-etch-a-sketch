@@ -1,0 +1,48 @@
+[33mcommit 1d8ce817f93f9603d04a3e1481c8b125fa8a19a8[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Merge: 720cf0b b62a352
+Author: Cyrus <cyrus.cheung123@gmail.com>
+Date:   Sat Jun 19 15:37:23 2021 -0700
+
+    Merge branch 'main' of https://github.com/cyrusjc/mcu-weather-app into main
+
+[33mcommit 720cf0ba616e31d9bb707c699fd8ee80920311b0[m
+Author: Cyrus <cyrus.cheung123@gmail.com>
+Date:   Sat Jun 19 15:37:07 2021 -0700
+
+    refactoring
+
+[33mcommit b62a352e2697261056a604e24da5d35cb62b6bc4[m
+Author: cyrusjc <32754336+cyrusjc@users.noreply.github.com>
+Date:   Mon Jun 7 03:20:37 2021 -0700
+
+    Delete arduino_secrets.h
+
+[33mcommit 7e4ce29303dcd65202875ed8c2f4b319f88a8a2f[m
+Author: Cyrus <cyrus.cheung123@gmail.com>
+Date:   Fri Jun 4 01:13:06 2021 -0700
+
+    added FreeRTOS tasks (read analog + post data)
+
+[33mcommit cc4d61de5c2fcd57237de425c18a1b61c2af66d0[m
+Author: Cyrus <cyrus.cheung123@gmail.com>
+Date:   Wed Jun 2 22:54:09 2021 -0700
+
+    configured adc
+
+[33mcommit d043a00bc80edc696f8f74851bfe9b0ec9205254[m
+Author: Cyrus <cyrus.cheung123@gmail.com>
+Date:   Tue Jun 1 22:11:25 2021 -0700
+
+    tidying code
+
+[33mcommit 2f0c431f32b1a17644e6f98265368d41ebeb8ed0[m
+Author: Cyrus <cyrus.cheung123@gmail.com>
+Date:   Tue Jun 1 01:50:44 2021 -0700
+
+    tidied up a bit
+
+[33mcommit 8252f4bae59a1b4e4a147955c8e6a77bd08dc105[m
+Author: Cyrus <cyrus.cheung123@gmail.com>
+Date:   Tue Jun 1 01:15:26 2021 -0700
+
+    first commit
